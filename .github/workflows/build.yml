@@ -7,5 +7,7 @@ jobs:
     steps:
       - name: check node version
         run: node --version
+      - name: Checkout code from Github
+        uses: actions/checkout@v3
       - name: Install Node Modules
         run: npm install
