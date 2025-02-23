@@ -3,20 +3,53 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf ./build",
+    "babel-node": "node_modules/.bin/babel-node",
+    "build:dev": "webpack --watch --config webpack/webpack.dev.js",
+    "start:dev-server": "babel-node --watch src/server/server.js",
+    "start:dev": "concurrently \"npm run build:dev\" \"npm run start:dev-server\"",
+    "build:prod": "webpack --config webpack/webpack.production.js && \"node_modules/.bin/babel\" src -d build --copy-files",
+    "start:prod-server": "node ./build/server/server.js",
+    "start": "npm run start:prod-server"
   },
   "author": "Rajeev Kumar",
   "license": "ISC",
   "devDependencies": {
-    "html-webpack-plugin": "^5.6.3",
-    "webpack": "^5.97.1",
-    "webpack-cli": "^6.0.1"
-  },
-  "dependencies": {
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.9",
+    "@babel/node": "^7.26.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-decorators": "^7.25.9",
+    "@babel/plugin-transform-modules-commonjs": "^7.26.3",
+    "@babel/plugin-transform-runtime": "^7.26.9",
     "@babel/preset-env": "^7.26.7",
     "@babel/preset-react": "^7.26.3",
-    "babel-loader": "^9.2.1"
+    "@babel/preset-typescript": "^7.26.0",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+    "babel-loader": "^9.2.1",
+    "babel-node": "^0.0.1-security",
+    "babel-preset-env": "^1.7.0",
+    "concurrently": "^9.1.2",
+    "html-webpack-plugin": "^5.6.3",
+    "nodemon": "^3.1.9",
+    "react-refresh": "^0.16.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-middleware": "^7.4.2",
+    "webpack-hot-middleware": "^2.26.1",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.2",
+    "@mui/material": "^6.4.2",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.5",
+    "webpack-merge": "^6.0.1"
   }
 }
