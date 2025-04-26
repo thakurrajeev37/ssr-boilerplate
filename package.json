@@ -1,5 +1,5 @@
 {
-  "name": "react-node-boilerplate",
+  "name": "ssr-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -26,18 +26,16 @@
     "@babel/preset-env": "^7.26.7",
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.26.0",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
     "babel-loader": "^9.2.1",
     "babel-node": "^0.0.1-security",
-    "babel-preset-env": "^1.7.0",
     "concurrently": "^9.1.2",
-    "html-webpack-plugin": "^5.6.3",
-    "nodemon": "^3.1.9",
-    "react-refresh": "^0.16.0",
+    "css-loader": "^7.1.2",
+    "mini-css-extract-plugin": "^2.9.2",
+    "sass": "^1.86.3",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
     "webpack": "^5.97.1",
     "webpack-cli": "^6.0.1",
-    "webpack-dev-middleware": "^7.4.2",
-    "webpack-hot-middleware": "^2.26.1",
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
@@ -50,6 +48,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.5",
-    "webpack-merge": "^6.0.1"
+    "webpack-merge": "^6.0.1",
+    "winston": "^3.17.0"
   }
 }

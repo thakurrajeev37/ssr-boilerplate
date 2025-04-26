@@ -1,22 +1,18 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { NavBar } from "./Organisms/NavBar.js";
-import uiRoutes from "../routes/uiRoutes.js";
-import { Home } from "./pages/Home.js";
+import routes from "../routes/routes.js";
 
 
 const App = () => {
     return (
        <>
-            <NavBar />
+            {/* <NavBar /> */}
 
           <Routes>
-                {
-                    uiRoutes.map(({path, component}) => {
-                        <Route path element={<component/>}/>
-                    })
-                }
-                <Route path="/home" element={<Home/>}/>
+                {routes.map((route) => (
+                    <Route key={route.path} path={route.path} element={<route.component />} />
+                ))}
             </Routes>
        </>
     );

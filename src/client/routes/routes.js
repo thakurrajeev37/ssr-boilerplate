@@ -1,7 +1,8 @@
 import { Home } from "../components/pages/Home.js";
 import { Dashboard } from "../components/pages/Dashboard.js";
+import PageNotFound from "../components/pages/PageNotFound.js";
 
-const uiRoutes = [
+const routes = [
     {
         path: "/home",
         component: Home
@@ -9,7 +10,11 @@ const uiRoutes = [
     {
         path: "/dashboard",
         component: Dashboard
+    },
+    {
+        path: "*",
+        component: PageNotFound
     }
 ];
 
-export default uiRoutes;
+export default routes;

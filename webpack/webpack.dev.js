@@ -1,8 +1,8 @@
 import path from 'path';
 import webpack from 'webpack';
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { fileURLToPath } from 'url';
 import nodeExternals from 'webpack-node-externals';
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
 const __dirname = path.dirname(__filename);
 
@@ -10,6 +10,8 @@ const webpackConfig = {
     externalsPresets: { node: true },
     externals: [nodeExternals()],
     mode: 'development',
+    target: "web",
+    devtool: "inline-source-map",
     devServer: {
         hot: true,
     },
@@ -17,13 +19,12 @@ const webpackConfig = {
         extensions: ['.js', '.jsx']
     },
     entry: {
-        index: ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000&reload=true', './public/index.js']
+        index: ['./src/client/assets/styles/_styles.scss', './src/client/index.js']
     }, 
     output: {
-        path: path.resolve(__dirname, '../build'),
-        publicPath: "/build",
-        filename: 'js/bundle.js',
-        libraryTarget: 'commonjs2',
+        path: path.resolve(__dirname, '../public'),
+        publicPath: "/",
+        filename: '[name].js'
     },
     module: {
         rules: [
@@ -31,25 +32,21 @@ const webpackConfig = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: {
-                 loader: 'babel-loader',
-                    options: {
-                       presets: [
-                            '@babel/preset-env',
-                            ['@babel/preset-react', { 'runtime': 'automatic' }]
-                        ],
-                        plugins: ['@babel/plugin-transform-runtime']
-                    }
+                 loader: 'babel-loader'
                 }
-            }
+            },
+            {
+              test: /\.s[ac]ss$/i,
+              use: [
+                MiniCssExtractPlugin.loader,
+                "css-loader",
+                "sass-loader",
+              ],
+            },
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new ReactRefreshWebpackPlugin({
-            overlay: {
-              sockIntegration: 'whm',
-            },
-          }),
+      new MiniCssExtractPlugin()
     ]
 };
 export default webpackConfig;

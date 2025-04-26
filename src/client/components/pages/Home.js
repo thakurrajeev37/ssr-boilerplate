@@ -1,7 +1,6 @@
 import React from 'react'
-
 export const Home = () => {
   return (
-    <div>Home Page data</div>
+    <h3 className='homeHeader'>Home Page</h3>
   )
 }

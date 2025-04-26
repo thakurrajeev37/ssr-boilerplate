@@ -1,32 +1,28 @@
 import express from 'express';
 import bodyParser from "body-parser";
+import path from "path";
+
+import { renderer } from "./helpers/renderer.js";
+
 const app = express()
 const port = process.env.PORT || 3008;
 
 app.use(bodyParser.json());
-app.use('/', express.static('public'))
+import "./util/logger.js";
 
-// routes
-import backendRoutes from "../client/routes/backendRoutes.js";
-app.use("/", backendRoutes);
-// import webpack from 'webpack';
-// import webpackConfig from '../../webpack/webpack.dev.js';
-// import webpackDevMiddleware from 'webpack-dev-middleware';
-// import webpackHotMiddleware from 'webpack-hot-middleware';
-// const compiler = webpack(webpackConfig);
-// app.use(webpackDevMiddleware(compiler, {
-//     publicPath: webpackConfig.output.publicPath,
-//     serverSideRender: true
-//   })
-// );
+import requestContextBuilder from './middleware/requestContextBuilder.js';
+app.use(requestContextBuilder);
 
-// app.use(webpackHotMiddleware(compiler, {
-//     log: false,
-//     path: `/__webpack_hmr`,
-//     heartbeat: 10 * 1000,
-//   })
-// );
+app.use('/', express.static(path.join(__dirname, '../../public')))
 
+
+app.all("*", (req, res) => {
+  global.logger.info({ message: "Global route call.", file: "server.js", url: req.url, userIP: req.ip });
+  renderer(req, res);
+});
+app.use((error, req, res, next) => {
+  error.statusCode = error.statusCode || 500;
+});
 app.listen(port, () => {
-  console.log(`Example app listening on PORT ${port}`)
+  console.log(`App listening on PORT ${port}`)
 })
