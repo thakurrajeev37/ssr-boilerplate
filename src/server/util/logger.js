@@ -1,13 +1,15 @@
-import {createLogger, format, transports} from 'winston';
-const { combine, timestamp, label, printf, prettyPrint, simple, splat } = format;
+import pino, { destination } from "pino";
 
-global.logger = createLogger({
-  level: 'info',
-  format: combine(
-    timestamp(),
-    prettyPrint()
-  ),
-  transports: [
-    new transports.File({ filename: 'logger/logs.log' }),
-  ],
-});
+const transport = pino.transport({
+  target: 'pino/file',
+  options: {destination: "./logs/log.log", mkdir: true}
+})
+const options = {
+  level: process.env.LOG_LEVEL || "info",
+  formatters: {
+    level: (label) => {
+      return {level: label}
+    }
+  }
+}
+global.logger = pino(options, transport);
