@@ -1,5 +1,6 @@
 # react-express-boilerplate
 SSR with React Express & Webpack
+Logger: Pino
 
 Run commands:
 1. npm install
