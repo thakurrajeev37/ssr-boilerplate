@@ -1,14 +1,14 @@
 import path from 'path';
 import webpack from 'webpack';
 import { fileURLToPath } from 'url';
-import nodeExternals from 'webpack-node-externals';
+// import nodeExternals from 'webpack-node-externals';
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
 const __dirname = path.dirname(__filename);
 
 const webpackConfig = {
     externalsPresets: { node: true },
-    externals: [nodeExternals()],
+    // externals: [nodeExternals()],
     mode: 'development',
     target: "web",
     devtool: "inline-source-map",
