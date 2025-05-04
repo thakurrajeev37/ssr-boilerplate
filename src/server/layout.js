@@ -1,4 +1,4 @@
-export default function layoutFunction(obj) {
+export default function layoutFunction(markup) {
     return `
         <!DOCTYPE html>
         <html lang="en">
@@ -7,8 +7,9 @@ export default function layoutFunction(obj) {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>SSR demo</title>
                 <link rel="stylesheet" href="./index.css">
+            </head>
             <body>
-                <div id="root">${obj.initialMarkup}</div>
+                <div id="root">${markup}</div>
                 <script type="text/javascript" src="./index.js"></script>
             </body>
         </html>

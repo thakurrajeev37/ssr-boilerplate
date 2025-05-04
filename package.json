@@ -47,7 +47,7 @@
     "express": "^4.21.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": "^7.1.5",
+    "react-router": "^7.5.3",
     "webpack-merge": "^6.0.1",
     "winston": "^3.17.0"
   }
