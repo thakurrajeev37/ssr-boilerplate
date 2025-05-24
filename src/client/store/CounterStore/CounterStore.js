@@ -1,10 +1,11 @@
-import { action, observable } from "mobx";
+import { action, observable, makeAutoObservable } from "mobx";
 
 export default class Counter {
     constructor(rootstore) {
+        makeAutoObservable(this);
         this.rootstore = rootstore;
     }
-    @observable count = 0;
+    @observable count = 1;
     @action setCount(count) {
         this.count = count;
     }

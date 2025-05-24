@@ -1,4 +1,6 @@
-export default function layoutFunction(markup) {
+import serialize from "serialize-javascript";
+
+export default function layoutFunction(markup, initialStore) {
     return `
         <!DOCTYPE html>
         <html lang="en">
@@ -10,6 +12,7 @@ export default function layoutFunction(markup) {
             </head>
             <body>
                 <div id="root">${markup}</div>
+                <script>window.__INITIAL_STATE__ = ${serialize(initialStore, { isJSON: true })}</script>
                 <script type="text/javascript" src="./index.js"></script>
             </body>
         </html>
