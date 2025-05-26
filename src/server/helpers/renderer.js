@@ -9,7 +9,7 @@ import { dehydrateRootStore } from "../../client/store/hydration";
 
 export function renderer (req, res) {
     const { counterStore, todoStore } = rootstore || {};
-    const todos = [{ text: "Dummy", completed: false, id: Date.now() }];
+    const todos = [{ text: "Clean the room", completed: false, id: Date.now() }];
     todoStore.todos = todos;
     counterStore.count = 5;
     const dehydratedRootStore = dehydrateRootStore({todos: todos});
