@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf ./build",
     "babel-node": "node_modules/.bin/babel-node",
-    "build:dev": "webpack --watch --config webpack/webpack.dev.js",
+    "build:dev": "webpack --config webpack/webpack.dev.js",
     "start:dev-server": "babel-node --watch src/server/server.js",
     "start:dev": "concurrently \"npm run build:dev\" \"npm run start:dev-server\"",
     "build:prod": "webpack --config webpack/webpack.production.js && \"node_modules/.bin/babel\" src -d build --copy-files",
