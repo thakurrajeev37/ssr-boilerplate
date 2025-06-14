@@ -1,0 +1,20 @@
+name: Deploy Maintenance Page
+
+on:
+  push:
+    branches:
+      - main # Or your deployment branch
+
+jobs:
+  deploy:
+    runs-on: self-hosted # Or your preferred runner
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Take application offline
+        run: |
+          # Create app_offline.htm file in the web root directory
+          echo "Taking application offline for deployment"
+          echo '<!DOCTYPE html><html><head><title>Maintenance</title></head><body><h1>Maintenance in progress</h1><p>We are currently updating our application. Please check back soon.</p></body></html>' > /path/to/your/web/root/app_offline.htm # Replace with your actual path
