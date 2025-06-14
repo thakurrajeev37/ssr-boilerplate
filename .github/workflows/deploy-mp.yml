@@ -3,11 +3,14 @@ name: Deploy Maintenance Page
 on:
   push:
     branches:
-      - mp-test # Or your deployment branch
+      - main # Or your deployment branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest # Or your preferred runner
+    permissions:
+      id-token: write #This is required for requesting the JWT
+      contents: read #This is required for actions/checkout
 
     steps:
       - name: Checkout code
