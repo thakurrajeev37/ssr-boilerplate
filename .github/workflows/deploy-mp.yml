@@ -3,7 +3,7 @@ name: Deploy Maintenance Page
 on:
   push:
     branches:
-      - main # Or your deployment branch
+      - mp-test # Or your deployment branch
 
 jobs:
   deploy:
