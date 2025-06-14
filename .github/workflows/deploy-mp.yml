@@ -17,4 +17,4 @@ jobs:
         run: |
           # Create app_offline.htm file in the web root directory
           echo "Taking application offline for deployment"
-          echo '<!DOCTYPE html><html><head><title>Maintenance</title></head><body><h1>Maintenance in progress</h1><p>We are currently updating our application. Please check back soon.</p></body></html>' > site/wwwroot/app_offline.htm # Replace with your actual path
+          echo '<!DOCTYPE html><html><head><title>Maintenance</title></head><body><h1>Maintenance in progress</h1><p>We are currently updating our application. Please check back soon.</p></body></html>' > https://react-mobx-ssr-ashtd7dscaf7ggcg.scm.canadacentral-01.azurewebsites.net/wwwroot/app_offline.htm # Replace with your actual path
