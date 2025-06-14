@@ -12,6 +12,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_6901D62D9F41492C8194F5CC36B4E02F }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_DA26FA7A88EB475CAF6918FEBC8C01C5 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_798767DB5F574759859BA405C40E1B80 }}
 
       - name: Take application offline
         run: |
